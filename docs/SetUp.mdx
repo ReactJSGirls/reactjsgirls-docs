@@ -1,5 +1,5 @@
 ---
-name: Set Up
+name: 1 - Set Up
 menu: Tinder For Dogs
 route: /tinder-for-dogs/set-up
 ---
@@ -14,18 +14,78 @@ import Code from '../components/code'
 | What you’ll learn | Create a React App that will get data from an API and change it locally                                                                                     |
 | Tools you’ll need      | A modern browser like Chrome. Access to [Codesandbox](https://codesandbox.io) |
 | Time needed to complete     | 1 hour                                                                                                                                                                        |
-| Just want to try the app?   | [Code Sandbox link](https://codesandbox.io/s/github/SaraVieira/workshop-one-components)                                                                                                                      |
+| Just want to try the app?   | [CodeSandbox link](https://codesandbox.io/s/github/SaraVieira/workshop-one-components)                                                                                                                      |
+
+## Create a new Sandbox
+
+We will start from scratch in CodeSandbox so let's start by creating a new React Sandbox and you can do this by clicking [here](https://codesandbox.io/s/new)
+
+## The code
+
+When creating a new Sandbox we get a `index.js` with the following code:
 
 <Code code={`
-<pre className={className} style={style}>
-  {tokens.map((line, i) => (
-    <div {...getLineProps({ line, key: i })}>
-      {line.map((token, key) => (
-        <span {...getTokenProps({ token, key })} />
-      ))}
+import React from "react";
+import ReactDOM from "react-dom";
+\n
+import "./styles.css";
+\n
+function App() {
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
     </div>
-  ))}
-</pre>
-`}/>
+  );
+}
+\n
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+`} />
 
-Hello, I'm a mdx file!
+Going piece by piece we first import React and React Dom. We need React for writing our application and react-dom to inject all our code in the DOM.
+The DOM is what the browser gives us to write HTML and in these two lines:
+
+<Code code={`
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+`} />
+
+We are telling React Dom to get the HTML we generated in our function and attach it to the DOM so we can see it in our page.
+
+## Changes to the template
+
+In React there two main type of components, the type this page has is a statless component. This means it only returns [JSX](https://reactjs.org/docs/introducing-jsx.html) and does no changes to data inside of it.
+
+In our case we need to a lot of stuff in our component so we need a class component because this will allow us to change data and also store some values inside the component.
+
+To turn it into a class component we need to first import `Component` from React and we do it like this:
+
+<Code code={`import React, { Component } from 'react'`} />
+
+> If you are not used to this syntax this means we are importing what the react package exports by default and also another function it gives us access to.
+
+#### Let's now transform our Component:
+
+In class components there is only one required method and that is the render method. This is where we tell react what we want to put in the DOM.
+
+Knowing this we end up with this:
+
+<Code code={`
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello CodeSandbox</h1>
+        <h2>Start editing to see some magic happen!</h2>
+      </div>
+    )
+  }
+}
+`} />
+
+There are not a lot of changes for now but this will allows us to continue making our component better and better.
+
+
+
+

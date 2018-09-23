@@ -1,0 +1,38 @@
+---
+name: 3 - Starter JSX
+menu: Tinder For Dogs
+route: /tinder-for-dogs/starter-jsx
+---
+
+
+import Code from '../components/code'
+import starter from './assets/starter.png'
+
+# Starter JSX
+
+## Let's add the starter JSX
+
+In our index.js let's now delete the JSX created by CodeSanbox and add the following JSX:
+
+<Code code={`
+  return (
+    <main>
+      <section className="dog-wrapper">
+        <h1>Choose your favorite dogs</h1>
+        <section className="dog-container">
+          <figure>
+            <img
+              className="dog-image"
+              src="https://images.dog.ceo/breeds/akita/Akita_Dog.jpg"
+              alt="A great akita dog"
+            />
+          </figure>
+        </section>
+      </section>
+    </main>
+  )
+`} />
+
+You should now have something like:
+
+<img src={starter} style={{ maxWidth: '100%' }} />

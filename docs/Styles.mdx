@@ -1,0 +1,146 @@
+---
+name: 2 - Styles
+menu: Tinder For Dogs
+route: /tinder-for-dogs/styles
+---
+
+
+import Code from '../components/code'
+
+# Styles
+
+## Add Styles
+
+In order to have an app that looks on point we will need to provide some base styles that you are of course more then welcome to edit.
+
+In our `index.js` we had this line:
+
+<Code code={`import './styles.css'`} />
+
+This means that this App will import this css file and in there we can place all the styles needed to make our app amazing.
+
+You can copy these styles:
+
+<Code code={`
+body * {
+  box-sizing: border-box;
+}
+\n
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+\n
+main {
+  font-family: sans-serif;
+  text-align: center;
+  width: 100%;
+  min-height: 100%;
+  background-repeat: repeat;
+  background-image: url('https://github.com/VueVixens/projects/blob/master/petshop/images/bg3.jpg?raw=true');
+  padding: 1em 0;
+}
+\n
+h1 {
+  font-size: 40px;
+  font-weight: normal;
+  margin-top: 10px;
+}
+\n
+figure {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+\n
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+\n
+.dog-placeholder {
+  max-width: 100%;
+}
+\n
+.dog-image {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  margin: auto;
+  animation: fadeIn 200ms ease-in;
+}
+\n
+.dog-wrapper {
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+}
+\n
+.dog-container {
+  box-shadow: 1px 1px 5px lightgray;
+  margin-bottom: 40px;
+}
+\n
+.dog-actions {
+  padding-bottom: 10px;
+  padding-right: 10px;
+  width: 100%;
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+\n
+button {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+\n
+button:hover {
+  background-color: lightgrey;
+  border-radius: 50%;
+}
+\n
+.favorite-dogs {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+}
+\n
+.heart-icon:disabled svg {
+  fill: grey;
+}
+\n
+.favorite-dogs li {
+  display: block;
+  width: 25%;
+  margin: 5px;
+  box-shadow: 0px 0px 2px lightgray;
+}
+\n
+.favorite-dogs li button {
+  float: right;
+}
+\n
+.favorite-dog {
+  width: 100%;
+}
+`} language="css"/>
+
+
+For now all this will do is break the styles we already have but you will see in the next chapter some awesome changes when we add the boilerplate JSX.
