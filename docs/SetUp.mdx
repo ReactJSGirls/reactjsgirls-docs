@@ -1,0 +1,24 @@
+---
+name: Set Up
+menu: Tinder For Dogs
+route: /tinder-for-dogs/set-up
+---
+
+
+import Code from '../components/code'
+
+# Set Up
+
+<Code code={`
+<pre className={className} style={style}>
+  {tokens.map((line, i) => (
+    <div {...getLineProps({ line, key: i })}>
+      {line.map((token, key) => (
+        <span {...getTokenProps({ token, key })} />
+      ))}
+    </div>
+  ))}
+</pre>
+`}/>
+
+Hello, I'm a mdx file!

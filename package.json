@@ -1,0 +1,20 @@
+{
+  "name": "reactjsgirls-docs",
+  "version": "1.0.0",
+  "description": "Docs for workshops",
+  "main": "index.js",
+  "repository": "https://github.com/ReactJSGirls/reactjsgirls-docs",
+  "author": "Sara Vieira",
+  "license": "MIT",
+  "scripts": {
+    "dev": "docz dev",
+    "build": "docz build",
+    "format": "prettier --write '**/*.{js,css,md}'"
+  },
+  "devDependencies": {
+    "docz": "^0.11.2"
+  },
+  "dependencies": {
+    "prism-react-renderer": "^0.1.4"
+  }
+}
