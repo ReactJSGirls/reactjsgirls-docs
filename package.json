@@ -9,10 +9,15 @@
   "scripts": {
     "dev": "docz dev",
     "build": "docz build",
+    "start": "serve dist",
     "format": "prettier --write '**/*.{js,css,md}'"
   },
+  "now": {
+    "alias": "docs.reactjsgirls.com"
+  },
   "devDependencies": {
-    "docz": "^0.11.2"
+    "docz": "^0.11.2",
+    "serve": "^10.0.1"
   },
   "dependencies": {
     "prism-react-renderer": "^0.1.4",

@@ -15,6 +15,7 @@ export default {
   description: "ReactJSGirls Workshops",
   title: "ReactJSGirls Workshops",
   src: "./docs",
+  dest: "./dist",
   themeConfig: {
     logo: {
       src:
