@@ -1,3 +1,5 @@
+import { css } from 'docz-plugin-css'
+
 const colors = {
   white: '#FFFFFF',
   grayExtraLight: '#EEF1F5',
@@ -16,6 +18,7 @@ export default {
   title: 'ReactJSGirls Workshops',
   src: './docs',
   dest: './dist',
+  indexHtml: './index.html',
   themeConfig: {
     logo: {
       src:
@@ -119,5 +122,13 @@ export default {
         fontSize: 18
       }
     }
-  }
+  },
+  plugins: [
+    css({
+      preprocessor: 'postcss',
+      loaderOpts: {
+        /* whatever your preprocessor loader accept */
+      }
+    })
+  ]
 }

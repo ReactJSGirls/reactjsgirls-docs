@@ -17,11 +17,13 @@
   },
   "devDependencies": {
     "docz": "^0.11.2",
+    "docz-plugin-css": "^0.11.0",
     "serve": "^10.0.1"
   },
   "dependencies": {
     "prism-react-renderer": "^0.1.4",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-icons": "^3.1.0"
+    "react-icons": "^3.1.0",
+    "recompose": "^0.30.0"
   }
 }

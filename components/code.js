@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FaCopy } from 'react-icons/fa'
+import { withState } from 'recompose'
 
 const styles = style => ({
   ...style,
@@ -19,7 +20,9 @@ const buttonStyles = {
   cursor: 'pointer'
 }
 
-export default ({ code, language = 'jsx' }) => (
+const enhance = withState('copied', 'setCopied', false)
+
+export default enhance(({ code, language = 'jsx', copied, setCopied }) => (
   <Highlight
     {...defaultProps}
     theme={nightOwl}
@@ -28,11 +31,12 @@ export default ({ code, language = 'jsx' }) => (
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre className={className} style={styles(style)}>
-        <CopyToClipboard text={code.trim()}>
+        <CopyToClipboard text={code.trim()} onCopy={() => setCopied(true)}>
           <button style={buttonStyles}>
-            <FaCopy fill="#fff" />
+            <FaCopy fill={copied ? '#72e872' : '#fff'} />
           </button>
         </CopyToClipboard>
+
         {tokens.map((line, i) => (
           <div {...getLineProps({ line, key: i })}>
             {line.map((token, key) => (
@@ -43,4 +47,4 @@ export default ({ code, language = 'jsx' }) => (
       </pre>
     )}
   </Highlight>
-)
+))
