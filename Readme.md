@@ -4,7 +4,7 @@
 
 ## Change log
 
-The change log can be found on the [Releases page](https://github.com/SaraVieira/reactjsgirls-docs/releases).
+The change log can be found on the [Releases page](https://github.com/ReactJSGirls/reactjsgirls-docs/releases).
 
 ## Contributing
 
@@ -12,6 +12,6 @@ Everyone is welcome to contribute. Please take a moment to review the [contribut
 
 ## Authors and license
 
-[SaraVieira](https://iamsaravieira.com) and [contributors](https://github.com/SaraVieira/reactjsgirls-docs/graphs/contributors).
+[SaraVieira](https://iamsaravieira.com) and [contributors](https://github.com/ReactJSGirls/reactjsgirls-docs/graphs/contributors).
 
 MIT License, see the included [License.md](License.md) file.
