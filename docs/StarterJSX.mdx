@@ -12,25 +12,36 @@ import starter from './assets/starter.png'
 
 ## Let's add the starter JSX
 
-In our index.js let's now delete the JSX created by CodeSanbox and add the following JSX:
+In our `index.js` find the `App` class and its `render` method. It currently returns this:
 
 <Code code={`
-  return (
-    <main>
-      <section className="dog-wrapper">
-        <h1>Choose your favorite dogs</h1>
-        <section className="dog-container">
-          <figure>
-            <img
-              className="dog-image"
-              src="https://images.dog.ceo/breeds/akita/Akita_Dog.jpg"
-              alt="A great akita dog"
-            />
-          </figure>
-        </section>
+return (
+  <div className="App">
+    <h1>Hello CodeSandbox</h1>
+    <h2>Start editing to see some magic happen!</h2>
+  </div>
+)
+`} />
+
+Delete all those lines and replace them with the following JSX:
+
+<Code code={`
+return (
+  <main>
+    <section className="dog-wrapper">
+      <h1>Choose your favorite dogs</h1>
+      <section className="dog-container">
+        <figure>
+          <img
+            className="dog-image"
+            src="https://images.dog.ceo/breeds/akita/Akita_Dog.jpg"
+            alt="A great akita dog"
+          />
+        </figure>
       </section>
-    </main>
-  )
+    </section>
+  </main>
+)
 `} />
 
 You should now have something like:
