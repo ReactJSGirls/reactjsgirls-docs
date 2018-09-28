@@ -12,7 +12,7 @@ import Code from '../components/code'
 | Project Goal           |Make an awesome React App                                                                                                                           |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | What you’ll learn | Create a React App that will get data from an API and change it locally                                                                                     |
-| Tools you’ll need      | A modern browser like Chrome. Access to [Codesandbox](https://codesandbox.io) |
+| Tools you’ll need      | A modern browser like Chrome. Access to [CodeSandbox](https://codesandbox.io) |
 | Time needed to complete     | 1 hour                                                                                                                                                                        |
 | Just want to try the app?   | [CodeSandbox link](https://codesandbox.io/s/github/SaraVieira/workshop-one-components)                                                                                                                      |
 
@@ -43,19 +43,20 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 `} />
 
-Going piece by piece we first import React and React Dom. We need React for writing our application and react-dom to inject all our code in the DOM.
-The DOM is what the browser gives us to write HTML and in these two lines:
+Going piece by piece we first import `react` and `react-dom`. We use React to define our components and ReactDOM to actually show them in the DOM.
+
+The DOM is what the browser shows on the screen. In these two lines:
 
 <Code code={`
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 `} />
 
-We are telling React Dom to get the HTML we generated in our function and attach it to the DOM so we can see it in our page.
+We are telling ReactDOM to get the [JSX](https://reactjs.org/docs/introducing-jsx.html) we generated in our function and attach it to the DOM so we can see it in our page. You can think of JSX as being similar to HTML, the biggest difference is that we use `className` instead of `class`.
 
 ## Changes to the template
 
-In React there two main type of components, the type this page has is a statless component. This means it only returns [JSX](https://reactjs.org/docs/introducing-jsx.html) and does no changes to data inside of it.
+In React there are two kinds of components: class components and functional components. This page uses a functional component (you can tell because it starts with a `function` keyword). This means it only returns [JSX](https://reactjs.org/docs/introducing-jsx.html) and does no changes to data inside of it.
 
 In our case we need to a lot of stuff in our component so we need a class component because this will allow us to change data and also store some values inside the component.
 
@@ -65,9 +66,9 @@ To turn it into a class component we need to first import `Component` from React
 
 > If you are not used to this syntax this means we are importing what the react package exports by default and also another function it gives us access to.
 
-#### Let's now transform our Component:
+#### Converting functional component to a class
 
-In class components there is only one required method and that is the render method. This is where we tell react what we want to put in the DOM.
+In class components there is only one required method and that is the `render` method. This is where we tell React what we want to put in the DOM.
 
 Knowing this we end up with this:
 
