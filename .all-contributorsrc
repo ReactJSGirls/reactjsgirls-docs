@@ -42,6 +42,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rodrigodata",
+      "name": "Rodrigo Andrade",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3861203?v=4",
+      "profile": "http://rodrigoandrade.me",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github"

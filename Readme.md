@@ -1,6 +1,6 @@
 # Docs for ReactJSGirls
 
-This repo serves as the hub for the documentation and turorials for ReactJSGirls and their workshops. Anyone is free to contribute and create issues.
+This repo serves as the hub for the documentation and tutorials for ReactJSGirls and their workshops. Anyone is free to contribute and create issues.
 
 We follow the http://berlincodeofconduct.org/.
 
