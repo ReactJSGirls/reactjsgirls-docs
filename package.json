@@ -10,12 +10,15 @@
     "dev": "docz dev",
     "build": "docz build",
     "start": "serve dist",
-    "format": "prettier --write '**/*.{js,css,md}'"
+    "format": "prettier --write '**/*.{js,css,md}'",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "now": {
     "alias": "docs.reactjsgirls.com"
   },
   "devDependencies": {
+    "all-contributors-cli": "^5.4.0",
     "docz": "^0.11.2",
     "docz-plugin-css": "^0.11.0",
     "serve": "^10.0.1"
