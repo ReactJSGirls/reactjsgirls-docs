@@ -1,0 +1,111 @@
+---
+name: 4 - Get Cat
+menu: Tinder For Cats
+route: /tinder-for-cats/get-cat
+---
+
+
+import Code from '../components/code'
+
+# Get New Cat on Page Load
+
+## The API
+
+For this application we will be using a free API that delivers us images of cats on demand <a href="https://www.catis.life/">Catis.life</a>
+
+The only endpoint we care about is the `/cat` that will give us a random cat for each API call we make.
+
+[https://www.catis.life/cat](https://www.catis.life/cat)
+
+## Call this API
+
+For this we are going to use the [fetch API](https://developers.google.com/web/updates/2015/03/introduction-to-fetch) and get our data from the API we said at the top. So let's create a function to do that in our `index.js`
+
+<Code code={`
+class App extends React.Component {
+  getCat = () => {
+    fetch("https://www.catis.life/cat")
+      .then(data => data.json())
+      .then(rsp => this.setState({ cat: rsp.cat }));
+  };
+  \n
+  ....
+}
+`} />
+
+What we did here is that we create a function using the arrow syntax so that this is automatically binded to the class and we can set the state of our application inside of it.
+
+<Code code={`
+    fetch("https://www.catis.life/cat")
+      .then(data => data.json())
+      .then(rsp => this.setState({ currentCat: rsp.cat }));
+`} />
+
+After we call the fetch we then transform what we receive to json to use it better in our app and once that is done we use a function called setState.
+
+What this function does is that is changes the state of our component and in this case the component is our whole App.
+
+But as you can see we have no state defined and in these cases we should always have a base state to be able to update it without a problem.
+
+To add state to our file add this before the `getCat` function:
+
+<Code code={`
+  state = {
+    currentCat: null
+  };
+`} />
+
+
+This will tell React that it should start with that part of the state as null and we will manipulate it later and we do it by assigning it to the image url we get from the API.
+
+## Call the `getCat` on page load
+
+So we have a function but so far we are not actually calling it anywhere so we don't actually have that cat image url.
+
+To fully grasp this you should know that React has lifecycle methods and this means you can run functions on several moments of the component creation and life.
+
+You can check out the [docs](https://reactjs.org/docs/react-component.html#the-component-lifecycle) for a full list of all the lifecycle methods available but for now let's talk about three:
+
+* `componentDidMount` - is invoked immediately after a component is mounted. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+* `componentDidUpdate` - is invoked immediately after updating occurs. This method is not called for the initial render.
+* `componentWillUnmount` -  is invoked immediately before a component is unmounted and destroyed.
+
+
+As you can see from this description what we want for this case is `componentDidMount` and inside of it we call the `getCat` we created.
+
+After the function we create our lifecycle method:
+
+<Code code={`
+  componentDidMount = () => this.getCat();
+`} />
+
+## Updating the render
+
+Now that we have the photo in our state we can render that instead of our static image.
+
+Right now we have this:
+
+<Code
+  language="markup"
+  code={`
+<img
+  className="cat-image"
+  src="https://catis.life/placeholder/400"
+  alt="An awesome cat"
+/>
+  `} />
+
+  But we want to substitute the src with a variable from the state so we need to interpolate and in React we do that by wrapping the property value in `{}`.
+
+
+<Code
+  language="markup"
+  code={`
+<img
+  className="cat-image"
+  src={this.state.currentCat}
+  alt="An awesome cat"
+/>
+  `} />
+
+You should now have a new cat being loaded every time you load the page 🎉

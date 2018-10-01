@@ -1,7 +1,7 @@
 ---
 name: 2 - Styles
-menu: Tinder For Dogs
-route: /tinder-for-dogs/styles
+menu: Tinder For Cats
+route: /tinder-for-cats/styles
 ---
 
 
@@ -22,26 +22,24 @@ This means that this App will import this CSS file and in there we can place all
 You can copy these styles:
 
 <Code code={`
-body * {
-  box-sizing: border-box;
-}
-\n
-body,
-html,
-#root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-\n
 main {
   font-family: sans-serif;
   text-align: center;
   width: 100%;
   min-height: 100%;
   background-repeat: repeat;
-  background-image: url('https://github.com/VueVixens/projects/blob/master/petshop/images/bg3.jpg?raw=true');
+  background-image: url("https://66.media.tumblr.com/b58f700c402dee1975464dc284ae91f0/tumblr_oslh4vbHPl1ws4s25o1_500.png");
   padding: 1em 0;
+}
+\n
+body * {
+  box-sizing: border-box;
+}
+\n
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 \n
 h1 {
@@ -65,11 +63,11 @@ figure {
   }
 }
 \n
-.dog-placeholder {
+.cat-placeholder {
   max-width: 100%;
 }
 \n
-.dog-image {
+.cat-image {
   width: auto;
   max-width: 100%;
   height: 100%;
@@ -78,7 +76,7 @@ figure {
   animation: fadeIn 200ms ease-in;
 }
 \n
-.dog-wrapper {
+.cat-wrapper {
   width: 80%;
   margin: auto;
   padding: 10px;
@@ -86,12 +84,12 @@ figure {
   border-radius: 4px;
 }
 \n
-.dog-container {
+.cat-container {
   box-shadow: 1px 1px 5px lightgray;
   margin-bottom: 40px;
 }
 \n
-.dog-actions {
+.cat-actions {
   padding-bottom: 10px;
   padding-right: 10px;
   width: 100%;
@@ -116,28 +114,36 @@ button:hover {
   border-radius: 50%;
 }
 \n
-.favorite-dogs {
+.favorite-cats {
   display: flex;
   list-style: none;
   flex-wrap: wrap;
 }
 \n
-.heart-icon:disabled svg {
-  fill: grey;
+.heart-icon svg {
+  fill: none;
+  stroke: #f44336;
+  stroke-width: 1px;
+  stroke-linejoin: round;
 }
 \n
-.favorite-dogs li {
+.heart-icon:disabled svg {
+  fill: #f44336;
+  opacity: 0.25;
+}
+\n
+.favorite-cats li {
   display: block;
   width: 25%;
   margin: 5px;
   box-shadow: 0px 0px 2px lightgray;
 }
 \n
-.favorite-dogs li button {
+.favorite-cats li button {
   float: right;
 }
 \n
-.favorite-dog {
+.favorite-cat {
   width: 100%;
 }
 `} language="css"/>
