@@ -1,0 +1,119 @@
+---
+name: 6 - Refactor Render
+menu: Tinder For Cats
+route: /tinder-for-cats/refactor-render
+---
+
+
+import Code from '../components/code'
+
+# Refactor Render
+
+Right now in our render function we are getting plenty of things from the state and calling it as `this.state.key` and this can get pretty messy after a while so it would be a good idea to get the keys that we actually use and deconstruct it from the state.
+
+This will make our code more readable and maintainable once you get more and more things from the state.
+
+Right now our render function looks like this:
+
+<Code code={`
+render() {
+  return (
+    <main>
+      <section className="cat-wrapper">
+        <h1>Choose your favorite cats</h1>
+        <section className="cat-container">
+          <figure>
+            <img
+              className="cat-image"
+              src={this.state.currentCat}
+              alt="A awesome akita cat"
+            />
+          </figure>
+          <ul className="cat-actions">
+            <li>
+              <button
+                onClick={() => this.favoriteCat(this.state.currentCat)}
+                className="heart-icon"
+              >
+                <GoHeart size="30" color="#f44336" />
+              </button>
+            </li>
+            <li>
+              <button onClick={this.getCat}>
+                <GoArrowRight size="30" />
+              </button>
+            </li>
+          </ul>
+        </section>
+        <ul className="favorite-cats">
+          {this.state.favoriteCats.map((cat, index) => (
+            <li>
+              <img class="favorite-cat" src={cat} alt="favorited cat" />
+              <button onClick={() => this.removeFavorite(index)}>
+                <GoTrashcan size="20" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  );
+}
+`}/>
+
+One thing that we can do here is extract `currentCat` and `favoriteCats` from the state using ES6 deconstruction like this:
+
+<Code code={`
+const { currentCat, favoriteCats } = this.state;
+`}/>
+
+This means that now we can target these pieces of state by only using `currentCat` and `favoriteCats`. Our render will now look like:
+
+<Code code={`
+render() {
+  const { currentCat, favoriteCats } = this.state;
+  return (
+    <main>
+      <section className="cat-wrapper">
+        <h1>Choose your favorite cats</h1>
+        <section className="cat-container">
+          <figure>
+            <img
+              className="cat-image"
+              src={currentCat}
+              alt="A awesome akita cat"
+            />
+          </figure>
+          <ul className="cat-actions">
+            <li>
+              <button
+                onClick={() => this.favoriteCat(currentCat)}
+                className="heart-icon"
+              >
+                <GoHeart size="30" color="#f44336" />
+              </button>
+            </li>
+            <li>
+              <button onClick={this.getCat}>
+                <GoArrowRight size="30" />
+              </button>
+            </li>
+          </ul>
+        </section>
+        <ul className="favorite-cats">
+          {favoriteCats.map((cat, index) => (
+            <li>
+              <img class="favorite-cat" src={cat} alt="favorited cat" />
+              <button onClick={() => this.removeFavorite(index)}>
+                <GoTrashcan size="20" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  );
+}
+`}/>
+
+And now our render function is completely separated from our state.
