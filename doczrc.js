@@ -1,4 +1,5 @@
 import { css } from 'docz-plugin-css'
+import * as path from 'path'
 
 const colors = {
   white: '#FFFFFF',
@@ -19,6 +20,7 @@ export default {
   src: './docs',
   dest: './dist',
   indexHtml: './index.html',
+  // theme: '../../theme',
   themeConfig: {
     logo: {
       src:
@@ -30,7 +32,7 @@ export default {
       /** properties bellow depends on mode select */
       primary: colors.orange,
       text: colors.dark,
-      link: colors.orange,
+      link: colors.skyBlue,
       footerText: colors.grayDark,
       sidebarBg: colors.grayExtraLight,
       sidebarText: colors.dark,

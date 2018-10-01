@@ -19,9 +19,9 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^5.4.0",
-    "docz": "^0.11.2",
+    "docz": "^0.12.5",
     "docz-plugin-css": "^0.11.0",
-    "serve": "^10.0.1"
+    "serve": "^10.0.2"
   },
   "dependencies": {
     "prism-react-renderer": "^0.1.4",
