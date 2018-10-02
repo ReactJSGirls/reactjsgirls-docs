@@ -1,0 +1,41 @@
+---
+name: 8 - Remove Cats from favorites
+menu: Tinder For Cats
+route: /tinder-for-cats/remove-favorites
+---
+
+
+import Code from '../components/code'
+
+# Remove Cats from favorites
+
+Right now we can add cats to our favorites but when clicking on removing a cat nothing happens so in this part we are going to create a function for that.
+
+First step is to think about how we want to do this:
+
+We have the all the URL's of the cats in the array and we know that we want to remove the one that is attached to the that `li` so what we want to do is leave all the cats in the array expect the one where the url matches the one of the cat we clicked.
+
+We can do this with a filter function where we get all the cats in the favorites and only returns the one where the URL is different then the URL of the cat we wanted to delete, like so:
+
+
+<Code code={`
+  removeFavorite = currentCat => {
+    this.setState(state => ({
+      favoriteCats: state.favoriteCats.filter(cat => cat !== currentCat)
+    }))
+  }
+`}/>
+
+That's exactly what we do here, the filter functions returns a new array with all the elements that pass the test implemented in the function. In this case all the cats will pass except the one we clicked on.
+
+Let's now call this function and pass it the current cat when we click the the trash icon in a favorite cat:
+
+
+<Code code={`
+  <button onClick={() => this.removeFavorite(cat)}>
+    <GoTrashcan size="20" />
+  </button>
+`}/>
+
+If you now click on the trash can in a cat that is already in favorites you can see that is removed 🎉
+

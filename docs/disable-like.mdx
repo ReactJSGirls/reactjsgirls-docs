@@ -1,0 +1,36 @@
+---
+name: 9 - Disable Like
+menu: Tinder For Cats
+route: /tinder-for-cats/disable-like
+---
+
+
+import Code from '../components/code'
+
+# Disable Like
+
+A small bug we have with our application right now is that we can like the same cat twice and that shouldn't be allowed. We can fix this by adding a disabled attribute to the button and attach it to a function that will run every time our render function runs.
+
+To do this let's attach the function and then create it:
+
+<Code code={`
+<button
+  className="heart-icon"
+  disabled={this.catInFavorites(currentCat)}
+  onClick={() => this.favoriteCat(currentCat)}
+>
+  <GoHeart size="30" color="#f44336" />
+</button>
+`}/>
+
+As you can see we are not calling the function as a callback here and that is because in this case we do want it to run on page render and also on every update to make sure that we are disabling the button correctly.
+
+## Write the function
+
+What we want to do is check if the current cat being shown in the big image is already in the array of `favoriteCats`. If we think about it we want to disable the button when the array already contains that cat and leave it enabled when that is not happening. In ES6 we got a new function in the array method called exactly that:
+
+<Code code={`
+  catInFavorites = cat => this.state.favoriteCats.includes(cat)
+`} />
+
+This function will return false when the cat as yet not been added and true when it has and that will make our button disabled 🎉

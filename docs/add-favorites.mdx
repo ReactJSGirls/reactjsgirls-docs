@@ -60,7 +60,7 @@ Let's now add the necessary JSX to make it possible for us to show our favorite 
 
 <Code code={`
 <ul className="favorite-cats">
-  {this.state.favoriteCats.map((cat, index) => (
+  {this.state.favoriteCats.map(cat => (
     <li>
       <img class="favorite-cat" src={cat} alt="favorited cat" />
       <button>
@@ -71,5 +71,5 @@ Let's now add the necessary JSX to make it possible for us to show our favorite 
 </ul>
 `} />
 
-What we are doing here is getting the favoriteCats and mapping over each cat in the array and it's url and also get the index of it in the array.
+What we are doing here is getting the favoriteCats and mapping over each cat in the array and it's url.
 For each we create a list item and in it place an image and a button that will serve the propose of deleting the cat from the favorites.
