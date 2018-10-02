@@ -1,4 +1,9 @@
-# Docs for ReactJSGirls
+
+<h1 align="center"><strong>Docs for ReactJS Girls</strong></h1>
+
+<h1 align="center">
+  <a href="https://docs.reactjsgirls.com/" target="blank"><img src="https://cdn.rawgit.com/ReactJSGirls/reactjsgirls-docs/ca538038/images/logo.png" width="200" height="200"  alt="ReactJS Girls Logo" /></a>
+</h1>
 
 This repo serves as the hub for the documentation and tutorials for ReactJSGirls and their workshops. Anyone is free to contribute and create issues.
 
