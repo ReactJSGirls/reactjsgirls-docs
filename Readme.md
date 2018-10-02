@@ -1,5 +1,5 @@
 
-<h1 align="center"><strong>Docs for ReactJSGirls</strong></h1>
+<h1 align="center"><strong>Docs for ReactJS Girls</strong></h1>
 
 <h1 align="center">
   <a href="https://docs.reactjsgirls.com/" target="blank"><img src="https://cdn.rawgit.com/ReactJSGirls/reactjsgirls-docs/ca538038/images/logo.png" width="200" height="200"  alt="ReactJS Girls Logo" /></a>
