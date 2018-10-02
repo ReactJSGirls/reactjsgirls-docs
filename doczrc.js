@@ -1,5 +1,4 @@
 import { css } from 'docz-plugin-css'
-import * as path from 'path'
 
 const colors = {
   white: '#FFFFFF',
@@ -24,12 +23,11 @@ export default {
   themeConfig: {
     logo: {
       src:
-        'https://cdn.rawgit.com/ReactJSGirls/reactjsgirls-docs/ac756a97/images/logo.png',
+        'https://cdn.rawgit.com/ReactJSGirls/reactjsgirls-docs/ca538038/images/logo.png',
       width: 150
     },
 
     colors: {
-      /** properties bellow depends on mode select */
       primary: colors.orange,
       text: colors.dark,
       link: colors.skyBlue,
