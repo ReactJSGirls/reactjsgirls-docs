@@ -52,15 +52,15 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 `} />
 
-We are telling ReactDOM to get the [JSX](https://reactjs.org/docs/introducing-jsx.html) we generated in our function and attach it to the DOM so we can see it in our page. You can think of JSX as being similar to HTML, the biggest difference is that we use `className` instead of `class`.
+We are telling ReactDOM to render the [JSX](https://reactjs.org/docs/introducing-jsx.html) we generated in our function and attach it to the DOM so we can see it in our page.So simply ReactDOM here decides where you should render the JSX which should be shown on the UI. You can think of JSX as being similar to HTML, the biggest difference is that we use `className` instead of `class`.
 
 JSX is nothing more than Javascript disguised in form of HTML.To know more about how React internally converts the JSX to Javascript object.Checkout [link](https://bit.ly/2RfpnO6).
 
 ## Changes to the template
 
-In React there are two kinds of components: class components and functional components. This page uses a functional component (you can tell because it starts with a `function` keyword). This means it only returns [JSX](https://reactjs.org/docs/introducing-jsx.html) and does no changes to data inside of it.
+In React there are two kinds of components: class components and functional components. This example uses a functional(a.k.a. stateless) component (you can tell because it starts with a `function` keyword). This means it only returns [JSX](https://reactjs.org/docs/introducing-jsx.html) and does no changes to data inside of it. This is also called Stateless Component.
 
-In our case we need to a lot of stuff in our component so we need a class component because this will allow us to change data and also store some values inside the component.
+In our case we need a lot of stuff in our component so we need a class component because this will allow us to change data and also store some values inside the component.
 
 To turn it into a class component we need to first import `Component` from React and we do it like this:
 
@@ -70,7 +70,7 @@ To turn it into a class component we need to first import `Component` from React
 
 #### Converting functional component to a class
 
-In class components there is only one required method and that is the `render` method. This is where we tell React what we want to put in the DOM.
+In class components there is only one required method and that is the `render` method. This is where we tell React what we want to put in the DOM and show in the DOM tree.
 
 Knowing this we end up with this:
 
