@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "docz dev",
     "build": "docz build",
-    "start": "serve dist",
+    "start": "serve -s dist",
     "format": "prettier --write '**/*.{js,css,md}'",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"

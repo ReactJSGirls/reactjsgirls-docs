@@ -51,6 +51,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "halitogunc",
+      "name": "Halit Ogunc",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/13641726?v=4",
+      "profile": "http://www.halitogunc.com/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github"
