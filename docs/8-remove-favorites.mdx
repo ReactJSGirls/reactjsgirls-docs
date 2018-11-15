@@ -19,11 +19,15 @@ We can do this with a filter function where we get all the cats in the favorites
 
 
 <Code code={`
-  removeFavorite = currentCat => {
+  removeCat = catToRemoveIndex => {
     this.setState(state => ({
-      favoriteCats: state.favoriteCats.filter(cat => cat !== currentCat)
-    }))
-  }
+      favoriteCats: state.favoriteCats.filter((cat, index) => {
+        if (index !== catToRemoveIndex) return true;
+
+        return false;
+      })
+    }));
+  };
 `}/>
 
 That's exactly what we do here, the filter functions returns a new array with all the elements that pass the test implemented in the function. In this case all the cats will pass except the one we clicked on.
@@ -32,7 +36,7 @@ Let's now call this function and pass it the current cat when we click the the t
 
 
 <Code code={`
-  <button onClick={() => this.removeFavorite(cat)}>
+  <button onClick={() => this.removeFavorite(index)}>
     <GoTrashcan size="20" />
   </button>
 `}/>
