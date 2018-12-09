@@ -4,7 +4,6 @@ menu: Tinder For Cats
 route: /tinder-for-cats/remove-favorites
 ---
 
-
 import Code from '../components/code'
 
 # Remove Cats from favorites
@@ -17,29 +16,29 @@ We have the all the URL's of the cats in the array and we know that we want to r
 
 We can do this with a filter function where we get all the cats in the favorites and only returns the one where the URL is different then the URL of the cat we wanted to delete, like so:
 
-
-<Code code={`
+<Code
+  code={`
   removeCat = catToRemoveIndex => {
     this.setState(state => ({
       favoriteCats: state.favoriteCats.filter((cat, index) => {
         if (index !== catToRemoveIndex) return true;
-
         return false;
       })
     }));
   };
-`}/>
+`}
+/>
 
 That's exactly what we do here, the filter functions returns a new array with all the elements that pass the test implemented in the function. In this case all the cats will pass except the one we clicked on.
 
 Let's now call this function and pass it the current cat when we click the the trash icon in a favorite cat:
 
-
-<Code code={`
+<Code
+  code={`
   <button onClick={() => this.removeFavorite(index)}>
     <GoTrashcan size="20" />
   </button>
-`}/>
+`}
+/>
 
 If you now click on the trash can in a cat that is already in favorites you can see that is removed 🎉
-

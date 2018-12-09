@@ -18,15 +18,15 @@
     "alias": "docs.reactjsgirls.com"
   },
   "devDependencies": {
-    "all-contributors-cli": "^5.4.0",
-    "docz": "^0.12.5",
+    "all-contributors-cli": "^5.4.1",
+    "docz": "^0.12.15",
     "docz-plugin-css": "^0.11.0",
-    "serve": "^10.0.2"
+    "serve": "^10.1.1"
   },
   "dependencies": {
-    "prism-react-renderer": "^0.1.4",
+    "prism-react-renderer": "^0.1.5",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-icons": "^3.1.0",
+    "react-icons": "^3.2.2",
     "recompose": "^0.30.0"
   }
 }
