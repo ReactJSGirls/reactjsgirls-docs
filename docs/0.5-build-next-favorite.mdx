@@ -4,7 +4,6 @@ menu: Tinder For Cats
 route: /tinder-for-cats/build-next
 ---
 
-
 import Code from '../components/code'
 
 # Build the Next and Favorite UI
@@ -15,16 +14,18 @@ First thing we will need to do is install [`react-icons`](https://www.npmjs.com/
 
 After that we want for now two icons: `GoHeart` and `GoArrowRight` and we want to import it from `/go` for the github icons so we write:
 
-
-<Code code={`
+<Code
+  code={`
 import { GoHeart, GoArrowRight } from "react-icons/go";
-`} />
+`}
+/>
 
 ## Add the boilerplate JSX
 
 After these has been added we can now add our JSX to show our buttons even if they don't do anything so after the `<figure>` paste this JSX:
 
-<Code code={`
+<Code
+  code={`
 <ul className="cat-actions">
   <li>
     <button className="heart-icon">
@@ -37,7 +38,8 @@ After these has been added we can now add our JSX to show our buttons even if th
     </button>
   </li>
 </ul>
-`} />
+`}
+/>
 
 ## Add next cat functionality
 
@@ -45,9 +47,10 @@ After we have this JSX we want to be able to get a new cat when we click next. T
 
 > We are attaching it to the button and not the actual icon because of accessability concerns. If someone with an assisting technology device tries to access our website and the onClick is on the icon it will not be announced as a button.
 
-We already have the `getCat` function that we can call to get a new cat so we  need to attach it to the button and we ready to go:
+We already have the `getCat` function that we can call to get a new cat so we need to attach it to the button and we ready to go:
 
-<Code code={`
+<Code
+  code={`
 <ul className="cat-actions">
   <li>
     <button className="heart-icon">
@@ -60,7 +63,7 @@ We already have the `getCat` function that we can call to get a new cat so we  n
     </button>
   </li>
 </ul>
-`} />
+`}
+/>
 
 When you now click on the next button you will get a new cat 🎉
-

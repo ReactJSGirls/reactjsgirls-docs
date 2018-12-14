@@ -4,7 +4,6 @@ menu: Tinder For Cats
 route: /tinder-for-cats/call-the-api
 ---
 
-
 import Code from '../components/code'
 
 # Get New Cat on Page Load
@@ -21,7 +20,8 @@ The only endpoint we care about is the `/cat` that will give us a random cat for
 
 For this we are going to use the [fetch API](https://developers.google.com/web/updates/2015/03/introduction-to-fetch) and get our data from the API we said at the top. So let's create a function to do that in our `index.js`
 
-<Code code={`
+<Code
+  code={`
 class App extends React.Component {
   getCat = () => {
     fetch("https://www.catis.life/cat")
@@ -31,15 +31,18 @@ class App extends React.Component {
   \n
   ....
 }
-`} />
+`}
+/>
 
 What we did here is that we create a function using the arrow syntax so that this is automatically binded to the class and we can set the state of our application inside of it.
 
-<Code code={`
+<Code
+  code={`
     fetch("https://www.catis.life/cat")
       .then(data => data.json())
       .then(rsp => this.setState({ currentCat: rsp.cat }));
-`} />
+`}
+/>
 
 After we call the fetch we then transform what we receive to json to use it better in our app and once that is done we use a function called setState.
 
@@ -49,12 +52,13 @@ But as you can see we have no state defined and in these cases we should always 
 
 To add state to our file add this before the `getCat` function:
 
-<Code code={`
+<Code
+  code={`
   state = {
     currentCat: null
   };
-`} />
-
+`}
+/>
 
 This will tell React that it should start with that part of the state as null and we will manipulate it later and we do it by assigning it to the image url we get from the API.
 
@@ -66,18 +70,19 @@ To fully grasp this you should know that React has lifecycle methods and this me
 
 You can check out the [docs](https://reactjs.org/docs/react-component.html#the-component-lifecycle) for a full list of all the lifecycle methods available but for now let's talk about three:
 
-* `componentDidMount` - is invoked immediately after a component is mounted. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
-* `componentDidUpdate` - is invoked immediately after updating occurs. This method is not called for the initial render.
-* `componentWillUnmount` -  is invoked immediately before a component is unmounted and destroyed.
-
+- `componentDidMount` - is invoked immediately after a component is mounted. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+- `componentDidUpdate` - is invoked immediately after updating occurs. This method is not called for the initial render.
+- `componentWillUnmount` - is invoked immediately before a component is unmounted and destroyed.
 
 As you can see from this description what we want for this case is `componentDidMount` and inside of it we call the `getCat` we created.
 
 After the function we create our lifecycle method:
 
-<Code code={`
+<Code
+  code={`
   componentDidMount = () => this.getCat();
-`} />
+`}
+/>
 
 ## Updating the render
 
@@ -93,10 +98,10 @@ Right now we have this:
   src="https://catis.life/placeholder/400"
   alt="An awesome cat"
 />
-  `} />
+  `}
+/>
 
-  But we want to substitute the src with a variable from the state so we need to interpolate and in React we do that by wrapping the property value in `{}`.
-
+But we want to substitute the src with a variable from the state so we need to interpolate and in React we do that by wrapping the property value in `{}`.
 
 <Code
   language="markup"
@@ -106,6 +111,7 @@ Right now we have this:
   src={this.state.currentCat}
   alt="An awesome cat"
 />
-  `} />
+  `}
+/>
 
 You should now have a new cat being loaded every time you load the page 🎉

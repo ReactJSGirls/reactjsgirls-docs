@@ -4,7 +4,6 @@ menu: Tinder For Cats
 route: /tinder-for-cats/build-favorites
 ---
 
-
 import Code from '../components/code'
 
 # Add Cats to favorites
@@ -13,12 +12,14 @@ Next step is to able to click the heart icon and add a cat to our favorite list 
 
 Let's start with adding our base state:
 
-<Code code={`
+<Code
+  code={`
 state = {
   currentCat: null,
   favoriteCats: []
 };
-`}/>
+`}
+/>
 
 ## Create the add favorite function
 
@@ -26,13 +27,15 @@ If we think about the state of our app we know that we have an empty array where
 
 Our function looks like:
 
-<Code code={`
+<Code
+  code={`
 favoriteCat = cat => {
   this.setState(state => ({
     favoriteCats: state.favoriteCats.concat(cat)
   }));
 };
-`}/>
+`}
+/>
 
 You may notice that we are using setState in a different way then we did in the past.
 That's because we can use it as a function that receives the state as an argument and this is useful when we want to modify the state based on the one we have and in this case we want to add something to an array so we need the previous state.
@@ -43,14 +46,16 @@ So, this function gets a cat and with it adds it to the array so that later we c
 
 In our JSX we have a `button` that is used for the heart icon and we want to attach it this function to it and also we need to pass it the current cat we are seeing.
 
-<Code code={`
+<Code
+  code={`
 <button
   onClick={() => this.favoriteCat(this.state.currentCat)}
   className="heart-icon"
 >
   <GoHeart size="30" color="#f44336" />
 </button>
-`}/>
+`}
+/>
 
 The reason we call it like: `() => this.favoriteCat(this.state.currentCat)` instead of just doing `this.favoriteCat(this.state.currentCat)` is because calling like this would call the function on the component mount and we only want to call it on click.
 
@@ -58,7 +63,8 @@ The reason we call it like: `() => this.favoriteCat(this.state.currentCat)` inst
 
 Let's now add the necessary JSX to make it possible for us to show our favorite cats right after we close the `cat-container` section:
 
-<Code code={`
+<Code
+  code={`
 <ul className="favorite-cats">
   {this.state.favoriteCats.map(cat => (
     <li>
@@ -69,7 +75,8 @@ Let's now add the necessary JSX to make it possible for us to show our favorite 
     </li>
   ))}
 </ul>
-`} />
+`}
+/>
 
 What we are doing here is getting the favoriteCats and mapping over each cat in the array and it's url.
 For each we create a list item and in it place an image and a button that will serve the propose of deleting the cat from the favorites.

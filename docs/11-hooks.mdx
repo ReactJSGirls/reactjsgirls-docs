@@ -1,0 +1,175 @@
+---
+name: 11 - Hooks
+menu: Tinder For Cats
+route: /tinder-for-cats/hooks
+---
+
+import Code from '../components/code'
+
+# Hooks
+
+One of the new things in react are hooks and if you found classes confusing this is perfect for you.
+You can read more about it [here](https://reactjs.org/docs/hooks-intro.html)
+
+So now that we have our App all in components let's see how we change our `index.js` to use Hooks.
+
+First thing is that we need to install the react@next and react-dom@next since hooks are still not final and are not in the stable versions of react.
+
+If we look at our code we use two main react "functions": State and ComponentDidMount and both of these can be replaced by their hook version.
+For state we have useState and for ComponentDidMount we have useEffect. So let's import these two:
+
+<Code
+  code={`
+import React, { useEffect, useState } from 'react'
+`}
+/>
+
+Next step is to remove our class function and make it a functional component:
+
+<Code
+  code={`
+const App = () => {
+  const state = {
+    currentCat: null,
+    favoriteCats: []
+  }
+\n
+  const getCat = () => {
+    const url = 'https://catis.life/cat'
+    this.setState({ currentCat: null })
+\n
+    fetch(url)
+      .then(rsp => rsp.json())
+      .then(data => this.setState({ currentCat: data.cat }))
+  }
+\n
+  const favoriteCat = cat => {
+    this.setState(state => ({
+      favoriteCats: this.state.favoriteCats.concat(cat)
+    }))
+  }
+\n
+  const removeFavorite = currentCatIndex => {
+    this.setState(state => ({
+      favoriteCats: state.favoriteCats.filter((_, i) => i !== currentCatIndex)
+    }))
+  }
+\n
+  const catInFavorites = cat => this.state.favoriteCats.includes(cat)
+\n
+  const componentDidMount = () => this.getCat()
+\n
+  return (/* Same JSX */)
+}
+`}
+/>
+
+Let's now useState to define our state:
+
+<Code
+  code={`
+const App = () => {
+  const [currentCat, seCurrentCat] = useState(null)
+  const [favoriteCats, setFavoriteCats] = useState([])
+`}
+/>
+
+Next step is to use the functions useState gives us instead of `this.setState`:
+
+<Code
+  code={`
+const App = () => {
+  const [currentCat, seCurrentCat] = useState(null)
+  const [favoriteCats, setFavoriteCats] = useState([])
+\n
+  const getCat = () => {
+    const url = 'https://catis.life/cat'
+\n
+    fetch(url)
+      .then(rsp => rsp.json())
+      .then(data => seCurrentCat(data.cat))
+}
+\n
+const favoriteCat = cat => {
+  setFavoriteCats(favoriteCats.concat(cat))
+}
+\n
+const removeFavorite = currentCatIndex => {
+  setFavoriteCats(favoriteCats.filter((\_, i) => i !== currentCatIndex))
+}
+\n
+const catInFavorites = cat => favoriteCats.includes(cat)
+`}
+/>
+
+Awesome! Let's now delete our componentDidMount and replace it with `useEffect`:
+
+<Code
+  code={`
+  useEffect(() => {
+    getCat()
+  }, [])
+`}
+/>
+
+And that's it! We are now using hooks and our whole `index.js` looks like this:
+
+<Code
+  code={`
+const App = () => {
+  const [currentCat, seCurrentCat] = useState(null)
+  const [favoriteCats, setFavoriteCats] = useState([])
+\n
+  const getCat = () => {
+    const url = 'https://catis.life/cat'
+\n
+    fetch(url)
+      .then(rsp => rsp.json())
+      .then(data => seCurrentCat(data.cat))
+  }
+\n
+  const favoriteCat = cat => {
+    setFavoriteCats(favoriteCats.concat(cat))
+  }
+\n
+  const removeFavorite = currentCatIndex => {
+    setFavoriteCats(favoriteCats.filter((_, i) => i !== currentCatIndex))
+  }
+\n
+  const catInFavorites = cat => favoriteCats.includes(cat)
+\n
+  useEffect(() => {
+    getCat()
+  }, [])
+\n
+  return (
+    <main>
+      <section className="cat-wrapper">
+        <Header />
+        <section className="cat-container">
+          <figure>
+            {currentCat ? (
+              <img
+                key={currentCat}
+                className="cat-image"
+                src={currentCat}
+                alt="A great cat"
+              />
+            ) : null}
+          </figure>
+          <Actions
+            getCat={getCat}
+            disabled={catInFavorites(currentCat)}
+            favoriteCat={() => favoriteCat(currentCat)}
+          />
+        </section>
+        <FavoriteCats
+          cats={favoriteCats}
+          removeFavorite={removeFavorite}
+        />
+      </section>
+    </main>
+  )
+}
+`}
+/>

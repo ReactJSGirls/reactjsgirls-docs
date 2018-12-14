@@ -1,0 +1,199 @@
+---
+name: 10 - Make Components
+menu: Tinder For Cats
+route: /tinder-for-cats/components
+---
+
+import Code from '../components/code'
+
+# Make Components
+
+Right now all our app works but it's one huge file and that can get out of hand pretty fast so let's split this into several components.
+
+We can split the app in the following parts:
+
+- Header
+- Cat image
+- Actions
+- Favorites
+
+Let's start with the header because that one doesn't need any info from our app.
+
+## Header
+
+Let's create a new folder called `components` and create a new file called `header.js` inside of it.
+
+In it import React and export a function that returns the JSX we had in the header part of our app.
+
+<Code
+  code={`
+import React from 'react'
+  \n
+const Header = () => <h1>Choose your favorite cats</h1>
+  \n
+export default Header
+`}
+/>
+
+Now we need to import this component in our `index.js` and we can do it by adding this line at the top:
+
+<Code
+  code={`
+import Header from './components/header'
+`}
+/>
+
+Instead of the H1 we can now have our new `Header` component like so:
+
+<Code
+  code={`
+<main>
+  <section className="cat-wrapper">
+    <Header />
+    <section className="cat-container">
+      <figure>
+        {currentCat ? (
+          <img
+            key={currentCat}
+            className="cat-image"
+            src={currentCat}
+            alt="A great cat"
+          />
+        ) : null}
+      </figure>
+`}
+/>
+
+## Favorite Cats
+
+Let's follow the same steps and create a file called `favoriteCats.js` and in it put our code like so:
+
+<Code
+  code={`
+import React from 'react'
+import { GoTrashcan } from 'react-icons/go'
+\n
+const favoriteCats = () => (
+  <ul className="favorite-cats">
+    {favoriteCats.map((cat, index) => (
+      <li>
+        <img class="favorite-cat" src={cat} alt="favorited cat" />
+        <button onClick={() => this.removeFavorite(index)}>
+          <GoTrashcan size="20" />
+        </button>
+      </li>
+    ))}
+  </ul>
+)
+\n
+export default favoriteCats
+`}
+/>
+
+In this case our component will need some information from our App component so let's fake that and pass that as parameters to the function favoriteCats.
+We need the favoriteCats and also the onclick for when you try to remove a favorite cat so we cant call the function like so:
+
+<Code
+  code={`
+import React from 'react'
+import { GoTrashcan } from 'react-icons/go'
+\n
+const favoriteCats = ({cats, removeFavorite}) => (
+  <ul className="favorite-cats">
+    {cats.map((cat, index) => (
+      <li>
+        <img class="favorite-cat" src={cat} alt="favorited cat" />
+        <button onClick={removeFavorite}>
+          <GoTrashcan size="20" />
+        </button>
+      </li>
+    ))}
+  </ul>
+)
+\n
+export default favoriteCats
+`}
+/>
+
+Now we can do the same thing and import/use our function in the `index.js` but it wont work:
+
+<Code
+  code={`
+import FavoriteCats from './components/favoriteCats'
+\n
+....
+\n
+    <FavoriteCats  />
+  </section>
+</main>
+`}
+/>
+
+We need to also pass the two values the function on the other side is expecting and we can pass that as we usally pass HTML atributes like so:
+
+<Code
+  code={`
+import FavoriteCats from './components/favoriteCats'
+\n
+....
+\n
+    <FavoriteCats
+      cats={favoriteCats}
+      removeFavorite={this.removeFavorite}
+    />
+  </section>
+</main>
+`}
+/>
+
+And now we have our FavoriteCats in a new file and everything looks cleaner.
+
+# Actions
+
+Much like the previous one let's create a new file called `actions.js` and put all the action code there:
+
+<Code
+  code={`
+import React from 'react'
+import { GoHeart, GoArrowRight } from 'react-icons/go'
+\n
+const Actions = ({ getCat, disabled, favoriteCat }) => (
+  <ul className="cat-actions">
+    <li>
+      <button
+        className="heart-icon"
+        disabled={this.catInFavorites(currentCat)}
+        onClick={() => this.favoriteCat(currentCat)}
+      >
+        <GoHeart size="30" color="#f44336" />
+      </button>
+    </li>
+    <li>
+      <button onClick={this.getCat}>
+        <GoArrowRight size="30" />
+      </button>
+    </li>
+  </ul>
+)
+\n
+export default Actions
+`}
+/>
+
+In the same way let's now pass all the component needs to render in our `index.js`
+
+<Code
+  code={`
+import Actions from './components/actions'
+\n
+....
+\n
+<Actions
+  getCat={this.getCat}
+  disabled={this.catInFavorites(currentCat)}
+  favoriteCat={() => this.favoriteCat(currentCat)}
+/>
+`}
+/>
+
+We have now made our `index.js` look way cleaner by moving things into their files and components.

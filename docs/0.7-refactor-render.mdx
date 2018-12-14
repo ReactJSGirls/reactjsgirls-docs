@@ -4,7 +4,6 @@ menu: Tinder For Cats
 route: /tinder-for-cats/refactor-render
 ---
 
-
 import Code from '../components/code'
 
 # Refactor Render
@@ -15,7 +14,8 @@ This will make our code more readable and maintainable once you get more and mor
 
 Right now our render function looks like this:
 
-<Code code={`
+<Code
+  code={`
 render() {
   return (
     <main>
@@ -59,17 +59,21 @@ render() {
     </main>
   );
 }
-`}/>
+`}
+/>
 
 One thing that we can do here is extract `currentCat` and `favoriteCats` from the state using ES6 deconstruction like this:
 
-<Code code={`
+<Code
+  code={`
 const { currentCat, favoriteCats } = this.state;
-`}/>
+`}
+/>
 
 This means that now we can target these pieces of state by only using `currentCat` and `favoriteCats`. Our render will now look like:
 
-<Code code={`
+<Code
+  code={`
 render() {
   const { currentCat, favoriteCats } = this.state;
   return (
@@ -114,6 +118,7 @@ render() {
     </main>
   );
 }
-`}/>
+`}
+/>
 
 And now our render function is completely separated from our state.
