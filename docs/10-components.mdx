@@ -103,7 +103,7 @@ const favoriteCats = ({cats, removeFavorite}) => (
     {cats.map((cat, index) => (
       <li>
         <img class="favorite-cat" src={cat} alt="favorited cat" />
-        <button onClick={removeFavorite}>
+        <button onClick={() => removeFavorite(index)}>
           <GoTrashcan size="20" />
         </button>
       </li>
@@ -162,14 +162,14 @@ const Actions = ({ getCat, disabled, favoriteCat }) => (
     <li>
       <button
         className="heart-icon"
-        disabled={this.catInFavorites(currentCat)}
-        onClick={() => this.favoriteCat(currentCat)}
+        disabled={disabled}
+        onClick={favoriteCat}
       >
         <GoHeart size="30" color="#f44336" />
       </button>
     </li>
     <li>
-      <button onClick={this.getCat}>
+      <button onClick={getCat}>
         <GoArrowRight size="30" />
       </button>
     </li>
