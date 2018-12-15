@@ -19,7 +19,7 @@ We can do this with a filter function where we get all the cats in the favorites
 <Code
   code={`
   removeCat = catToRemoveIndex => {
-    this.setState(state => ({
+    this.removeFavorite(state => ({
       favoriteCats: state.favoriteCats.filter((cat, index) => {
         if (index !== catToRemoveIndex) return true;
         return false;
