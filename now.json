@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "reactjsgirls-docs",
+  "alias": "docs.reactjsgirls.com",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ]
+}
