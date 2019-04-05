@@ -78,7 +78,7 @@ const favoriteCats = () => (
     {favoriteCats.map((cat, index) => (
       <li>
         <img class="favorite-cat" src={cat} alt="favorited cat" />
-        <button onClick={() => this.removeFavorite(index)}>
+        <button onClick={() => removeFavorite(index)}>
           <GoTrashcan size="20" />
         </button>
       </li>
@@ -139,7 +139,7 @@ import FavoriteCats from './components/favoriteCats'
 \n
     <FavoriteCats
       cats={favoriteCats}
-      removeFavorite={this.removeFavorite}
+      removeFavorite={removeFavorite}
     />
   </section>
 </main>
@@ -189,9 +189,9 @@ import Actions from './components/actions'
 ....
 \n
 <Actions
-  getCat={this.getCat}
-  disabled={this.catInFavorites(currentCat)}
-  favoriteCat={() => this.favoriteCat(currentCat)}
+  getCat={getCat}
+  disabled={catInFavorites(currentCat)}
+  favoriteCat={() => favoriteCat(currentCat)}
 />
 `}
 />

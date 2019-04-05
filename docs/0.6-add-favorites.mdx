@@ -14,10 +14,7 @@ Let's start with adding our base state:
 
 <Code
   code={`
-state = {
-  currentCat: null,
-  favoriteCats: []
-};
+  const [favoriteCats, setFavoriteCats] = useState([])
 `}
 />
 
@@ -29,16 +26,11 @@ Our function looks like:
 
 <Code
   code={`
-favoriteCat = cat => {
-  this.setState(state => ({
-    favoriteCats: state.favoriteCats.concat(cat)
-  }));
-};
+  const favoriteCat = cat => {
+    setFavoriteCats(favoriteCats.concat(cat))
+  }
 `}
 />
-
-You may notice that we are using setState in a different way then we did in the past.
-That's because we can use it as a function that receives the state as an argument and this is useful when we want to modify the state based on the one we have and in this case we want to add something to an array so we need the previous state.
 
 So, this function gets a cat and with it adds it to the array so that later we can map all over the cats we have saved in that array.
 
@@ -49,7 +41,7 @@ In our JSX we have a `button` that is used for the heart icon and we want to att
 <Code
   code={`
 <button
-  onClick={() => this.favoriteCat(this.state.currentCat)}
+  onClick={() => favoriteCat(currentCat)}
   className="heart-icon"
 >
   <GoHeart size="30" color="#f44336" />
@@ -57,7 +49,7 @@ In our JSX we have a `button` that is used for the heart icon and we want to att
 `}
 />
 
-The reason we call it like: `() => this.favoriteCat(this.state.currentCat)` instead of just doing `this.favoriteCat(this.state.currentCat)` is because calling like this would call the function on the component mount and we only want to call it on click.
+The reason we call it like: `() => favoriteCat(currentCat)` instead of just doing `favoriteCat(currentCat)` is because calling like this would call the function on the component mount and we only want to call it on click.
 
 ## Add the JSX
 
@@ -66,7 +58,7 @@ Let's now add the necessary JSX to make it possible for us to show our favorite 
 <Code
   code={`
 <ul className="favorite-cats">
-  {this.state.favoriteCats.map(cat => (
+  {favoriteCats.map(cat => (
     <li>
       <img class="favorite-cat" src={cat} alt="favorited cat" />
       <button>

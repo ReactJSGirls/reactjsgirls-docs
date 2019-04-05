@@ -18,14 +18,12 @@ We can do this with a filter function where we get all the cats in the favorites
 
 <Code
   code={`
-  removeCat = catToRemoveIndex => {
-    this.removeFavorite(state => ({
-      favoriteCats: state.favoriteCats.filter((cat, index) => {
+  const removeFavorite = currentCatIndex => {
+    setFavoriteCats(favoriteCats.filter((cat, index) => {
         if (index !== catToRemoveIndex) return true;
         return false;
       })
-    }));
-  };
+  }
 `}
 />
 
@@ -35,7 +33,7 @@ Let's now call this function and pass it the current cat when we click the the t
 
 <Code
   code={`
-  <button onClick={() => this.removeFavorite(index)}>
+  <button onClick={() => removeFavorite(index)}>
     <GoTrashcan size="20" />
   </button>
 `}

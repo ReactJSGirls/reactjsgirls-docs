@@ -16,8 +16,8 @@ To do this let's attach the function and then create it:
   code={`
 <button
   className="heart-icon"
-  disabled={this.catInFavorites(currentCat)}
-  onClick={() => this.favoriteCat(currentCat)}
+  disabled={catInFavorites(currentCat)}
+  onClick={() => favoriteCat(currentCat)}
 >
   <GoHeart size="30" color="#f44336" />
 </button>
@@ -32,7 +32,7 @@ What we want to do is check if the current cat being shown in the big image is a
 
 <Code
   code={`
-  catInFavorites = cat => this.state.favoriteCats.includes(cat)
+  const catInFavorites = cat => favoriteCats.includes(cat)
 `}
 />
 

@@ -22,25 +22,28 @@ For this we are going to use the [fetch API](https://developers.google.com/web/u
 
 <Code
   code={`
-class App extends React.Component {
-  getCat = () => {
-    fetch("https://www.catis.life/cat")
-      .then(data => data.json())
-      .then(rsp => this.setState({ cat: rsp.cat }));
-  };
-  \n
-  ....
+const App = () => {
+  const getCat = () => {
+    const url = 'https://catis.life/cat'
+    setCurrentCat(null)
+\n
+    fetch(url)
+      .then(rsp => rsp.json())
+      .then(data => setCurrentCat(data.cat))
+  }
+\n
+....
 }
 `}
 />
 
-What we did here is that we create a function using the arrow syntax so that this is automatically binded to the class and we can set the state of our application inside of it.
+What we did here is that we create a function using the arrow syntax state of our application inside of it.
 
 <Code
   code={`
-    fetch("https://www.catis.life/cat")
-      .then(data => data.json())
-      .then(rsp => this.setState({ currentCat: rsp.cat }));
+    fetch(url)
+      .then(rsp => rsp.json())
+      .then(data => setCurrentCat(data.cat))
 `}
 />
 
@@ -48,15 +51,21 @@ After we call the fetch we then transform what we receive to json to use it bett
 
 What this function does is that is changes the state of our component and in this case the component is our whole App.
 
-But as you can see we have no state defined and in these cases we should always have a base state to be able to update it without a problem.
+But as you can see we have no `setCurrentCat` defined.
 
 To add state to our file add this before the `getCat` function:
 
 <Code
   code={`
-  state = {
-    currentCat: null
-  };
+    const [currentCat, setCurrentCat] = useState(null)
+`}
+/>
+
+We should also tell Javascript to import `useState` from React and we do that by changing our React import to:
+
+<Code
+  code={`
+import React, { useState, useEffect } from 'react'
 `}
 />
 
@@ -66,23 +75,29 @@ This will tell React that it should start with that part of the state as null an
 
 So we have a function but so far we are not actually calling it anywhere so we don't actually have that cat image url.
 
-To fully grasp this you should know that React has lifecycle methods and this means you can run functions on several moments of the component creation and life.
+This is why we imported effect, these effects are meant to be run in several parts of the react component lifecycle.
 
-You can check out the [docs](https://reactjs.org/docs/react-component.html#the-component-lifecycle) for a full list of all the lifecycle methods available but for now let's talk about three:
-
-- `componentDidMount` - is invoked immediately after a component is mounted. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
-- `componentDidUpdate` - is invoked immediately after updating occurs. This method is not called for the initial render.
-- `componentWillUnmount` - is invoked immediately before a component is unmounted and destroyed.
-
-As you can see from this description what we want for this case is `componentDidMount` and inside of it we call the `getCat` we created.
-
-After the function we create our lifecycle method:
+The syntax is like this:
 
 <Code
   code={`
-  componentDidMount = () => this.getCat();
+  useEffect(() => {
+    // function to run
+  }, [/* Dependencies */])
 `}
 />
+
+By dependencies I mean what values need to change in order for this effect to run again. In our case we want to this effect to run when the page loads so we can set it as an empty array:
+
+<Code
+  code={`
+  useEffect(() => {
+    getCat()
+  }, [])
+`}
+/>
+
+> Leaving out the second parameter out of the function would tell react to run this function everytime there was a change in our component
 
 ## Updating the render
 
@@ -108,7 +123,7 @@ But we want to substitute the src with a variable from the state so we need to i
   code={`
 <img
   className="cat-image"
-  src={this.state.currentCat}
+  src={currentCat}
   alt="An awesome cat"
 />
   `}
