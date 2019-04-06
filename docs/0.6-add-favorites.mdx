@@ -8,7 +8,7 @@ import Code from '../components/code'
 
 # Add Cats to favorites
 
-Next step is to able to click the heart icon and add a cat to our favorite list and to do this we will have an array in our state that we will push to when someone clicks the heart button on a cat.
+The next step is to make it possible to click on the heart icon and add a cat to our favorite list. To do this, we will have an array in our state that we will store all our favorite cats. When a button with a heart icon is clicked, we concat the cat data on this array to store it as a favorite.
 
 Let's start with adding our base state:
 
@@ -20,7 +20,7 @@ Let's start with adding our base state:
 
 ## Create the add favorite function
 
-If we think about the state of our app we know that we have an empty array where we are supposed to put our favorite cats so we need to concat the cat we just liked.
+If we think about the state of our app, we know that we have an empty array where all our favorite cats will be stored. In order to add the cat we just liked to our `favoriteCats` array, we need to concat the new cat.
 
 Our function looks like:
 
@@ -32,11 +32,11 @@ Our function looks like:
 `}
 />
 
-So, this function gets a cat and with it adds it to the array so that later we can map all over the cats we have saved in that array.
+This function gets a cat and with it adds it to the array so that later we can map all over the cats we have saved in that array.
 
 ## Call the function
 
-In our JSX we have a `button` that is used for the heart icon and we want to attach it this function to it and also we need to pass it the current cat we are seeing.
+In our JSX we have a `button` with a heart icon inside. We will attach an `onClick` event to it and use it to pass the cat we are seeing to our `favouriteCats` array.
 
 <Code
   code={`
@@ -49,7 +49,7 @@ In our JSX we have a `button` that is used for the heart icon and we want to att
 `}
 />
 
-The reason we call it like: `() => favoriteCat(currentCat)` instead of just doing `favoriteCat(currentCat)` is because calling like this would call the function on the component mount and we only want to call it on click.
+The reason our function looks like this: `() => favoriteCat(currentCat)` instead of `favoriteCat(currentCat)`, is because the latter would call the function on the component, when we only want it called on the click of the button.
 
 ## Add the JSX
 
@@ -70,5 +70,5 @@ Let's now add the necessary JSX to make it possible for us to show our favorite 
 `}
 />
 
-What we are doing here is getting the favoriteCats and mapping over each cat in the array and it's url.
-For each we create a list item and in it place an image and a button that will serve the propose of deleting the cat from the favorites.
+Here we are getting the `favoriteCats` array and mapping over each cat in the array and it's URL.
+For each cat, we create a list item and place an image inside of it, along with a button that will serve the purpose of deleting the cat from the favorites list.
