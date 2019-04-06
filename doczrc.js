@@ -19,7 +19,6 @@ export default {
   src: './docs',
   dest: './dist',
   indexHtml: './index.html',
-  // theme: '../../theme',
   themeConfig: {
     logo: {
       src:
@@ -125,10 +124,7 @@ export default {
   },
   plugins: [
     css({
-      preprocessor: 'postcss',
-      loaderOpts: {
-        /* whatever your preprocessor loader accept */
-      }
+      preprocessor: 'postcss'
     })
   ]
 }
