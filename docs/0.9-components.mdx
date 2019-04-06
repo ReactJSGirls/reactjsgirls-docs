@@ -75,10 +75,10 @@ import { GoTrashcan } from 'react-icons/go'
 \n
 const favoriteCats = () => (
   <ul className="favorite-cats">
-    {favoriteCats.map((cat, index) => (
+    {favoriteCats.map(cat => (
       <li>
         <img class="favorite-cat" src={cat} alt="favorited cat" />
-        <button onClick={() => removeFavorite(index)}>
+        <button onClick={() => removeFavorite(cat)}>
           <GoTrashcan size="20" />
         </button>
       </li>
@@ -99,10 +99,10 @@ import { GoTrashcan } from 'react-icons/go'
 \n
 const favoriteCats = ({ cats, removeFavorite }) => (
   <ul className="favorite-cats">
-    {cats.map((cat, index) => (
+    {cats.map(cat => (
       <li>
         <img class="favorite-cat" src={cat} alt="favorited cat" />
-        <button onClick={() => removeFavorite(index)}>
+        <button onClick={() => removeFavorite(cat)}>
           <GoTrashcan size="20" />
         </button>
       </li>
