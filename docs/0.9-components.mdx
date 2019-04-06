@@ -8,7 +8,7 @@ import Code from '../components/code'
 
 # Make Components
 
-Right now all our app works but it's one huge file and that can get out of hand pretty fast so let's split this into several components.
+Right now our app works perfectly fine, but all of our code is in one big file. This can get out of hand pretty fast, so let's split our app's logic into several components.
 
 We can split the app in the following parts:
 
@@ -23,7 +23,7 @@ Let's start with the header because that one doesn't need any info from our app.
 
 Let's create a new folder called `components` and create a new file called `header.js` inside of it.
 
-In it import React and export a function that returns the JSX we had in the header part of our app.
+In this file, import React and export a function that returns the JSX we had in the header part of our app.
 
 <Code
   code={`
@@ -43,7 +43,7 @@ import Header from './components/header'
 `}
 />
 
-Instead of the H1 we can now have our new `Header` component like so:
+Instead of the H1 we can now use our new `Header` component like so:
 
 <Code
   code={`
@@ -66,7 +66,7 @@ Instead of the H1 we can now have our new `Header` component like so:
 
 ## Favorite Cats
 
-Let's follow the same steps and create a file called `favoriteCats.js` and in it put our code like so:
+Let's follow the same steps like above and create a file called `favoriteCats.js`. In our new component, we also need to import the icons we want to use. This is how our code will look like:
 
 <Code
   code={`
@@ -75,10 +75,10 @@ import { GoTrashcan } from 'react-icons/go'
 \n
 const favoriteCats = () => (
   <ul className="favorite-cats">
-    {favoriteCats.map((cat, index) => (
+    {favoriteCats.map(cat => (
       <li>
         <img class="favorite-cat" src={cat} alt="favorited cat" />
-        <button onClick={() => removeFavorite(index)}>
+        <button onClick={() => removeFavorite(cat)}>
           <GoTrashcan size="20" />
         </button>
       </li>
@@ -90,20 +90,19 @@ export default favoriteCats
 `}
 />
 
-In this case our component will need some information from our App component so let's fake that and pass that as parameters to the function favoriteCats.
-We need the favoriteCats and also the onclick for when you try to remove a favorite cat so we cant call the function like so:
+Our new component will also need some information from our App component, so we need to change a few things. To make this new component accept data from our parent component, we add `{ cats, removeFavorite }` like so: 
 
 <Code
   code={`
 import React from 'react'
 import { GoTrashcan } from 'react-icons/go'
 \n
-const favoriteCats = ({cats, removeFavorite}) => (
+const favoriteCats = ({ cats, removeFavorite }) => (
   <ul className="favorite-cats">
-    {cats.map((cat, index) => (
+    {cats.map(cat => (
       <li>
         <img class="favorite-cat" src={cat} alt="favorited cat" />
-        <button onClick={() => removeFavorite(index)}>
+        <button onClick={() => removeFavorite(cat)}>
           <GoTrashcan size="20" />
         </button>
       </li>
@@ -115,7 +114,9 @@ export default favoriteCats
 `}
 />
 
-Now we can do the same thing and import/use our function in the `index.js` but it wont work:
+Instead of our list getting data from `favoriteCats`, we now want to get it from `cats`, which we will pass down from our App component in the next step. This means we have to change `favoriteCats.map(...)` to `cats.map(...)`, but we can leave `removeFavorite(index)` as it is, because the name hasn't changed.
+
+As you might have noticed, our code is now broken with the new changes we made to the code. We also need to update our App component to make sure our app works again. Now we can do the same thing and import/use our function in the `index.js`. However it still won't work:
 
 <Code
   code={`
@@ -129,7 +130,7 @@ import FavoriteCats from './components/favoriteCats'
 `}
 />
 
-We need to also pass the two values the function on the other side is expecting and we can pass that as we usally pass HTML atributes like so:
+We also need to pass the two values the function in our new component is expecting, which are `cats` and `removeFavorite`. We do this the way we write HTML atributes:
 
 <Code
   code={`
@@ -180,7 +181,7 @@ export default Actions
 `}
 />
 
-In the same way let's now pass all the component needs to render in our `index.js`
+In the same way let's now pass all the data this component needs to render in our `index.js`
 
 <Code
   code={`
@@ -196,4 +197,4 @@ import Actions from './components/actions'
 `}
 />
 
-We have now made our `index.js` look way cleaner by moving things into their files and components.
+We have now made our `index.js` look way cleaner by moving things into separate files and components.

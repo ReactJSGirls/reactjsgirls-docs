@@ -10,15 +10,15 @@ import Code from '../components/code'
 
 ## The API
 
-For this application we will be using a free API that delivers us images of cats on demand [https://www.catis.life](https://www.catis.life)
+For this application we will be using a free API that gives us cat images: [https://www.catis.life](https://www.catis.life)
 
-The only endpoint we care about is the `/cat` that will give us a random cat for each API call we make.
+The only endpoint we care about is `/cat`, which will give us a random cat for each API call we make.
 
 [https://www.catis.life/cat](https://www.catis.life/cat)
 
 ## Call this API
 
-For this we are going to use the [fetch API](https://developers.google.com/web/updates/2015/03/introduction-to-fetch) and get our data from the API we said at the top. So let's create a function to do that in our `index.js`
+To make API calls, we will use the [fetch API](https://developers.google.com/web/updates/2015/03/introduction-to-fetch) to get the data we just mentioned above. So let's create a function to do that in our `index.js`:
 
 <Code
   code={`
@@ -37,23 +37,23 @@ const App = () => {
 `}
 />
 
-What we did here is that we create a function using the arrow syntax state of our application inside of it.
+Here we created a function using the arrow syntax in order to make state available in our `App` and added a `getCat` function inside of it. This function will fetch the data we need for our app.
 
 <Code
   code={`
     fetch(url)
-      .then(rsp => rsp.json())
+      .then(response => response.json())
       .then(data => setCurrentCat(data.cat))
 `}
 />
 
-After we call the fetch we then transform what we receive to json to use it better in our app and once that is done we use a function called setState.
+After we call the fetch function, we will transform the data we receive to JSON. This will make it easier for us to handle the data in our app. The next step is to change our state with `setCurrentCat`.
 
-What this function does is that is changes the state of our component and in this case the component is our whole App.
+`setCurrentCat` changes the state of our component and in this case the component is our whole App.
 
-But as you can see we have no `setCurrentCat` defined.
+But as you can see, we have no `setCurrentCat` defined.
 
-To add state to our file add this before the `getCat` function:
+To add this state to our file, we add this before the `getCat` function:
 
 <Code
   code={`
@@ -61,7 +61,7 @@ To add state to our file add this before the `getCat` function:
 `}
 />
 
-We should also tell Javascript to import `useState` from React and we do that by changing our React import to:
+We should also tell JavaScript to import `useState` from React and we do that by changing our React import to:
 
 <Code
   code={`
@@ -69,13 +69,21 @@ import React, { useState, useEffect } from 'react'
 `}
 />
 
-This will tell React that it should start with that part of the state as null and we will manipulate it later and we do it by assigning it to the image url we get from the API.
+This will tell React that it should start with that part of the state as null and that we will manipulate it later, which we do by assigning it to the image URL (`data.cat`) we get from the API with `setCurrentCat`: 
+
+<Code
+  code={`
+    fetch(url)
+      .then(response => response.json())
+      .then(data => setCurrentCat(data.cat))
+`}
+/>
 
 ## Call the `getCat` on page load
 
-So we have a function but so far we are not actually calling it anywhere so we don't actually have that cat image url.
+So far we have a `getCat` function, but it's not being called anywhere. This means we don't have a cat image URL yet.
 
-This is why we imported effect, these effects are meant to be run in several parts of the react component lifecycle.
+This is where the `useEffect` hook comes in and it will let us fetch data for our app. It tells React that our component needs to do something after it has been rendered. The function we pass (`getCat()`) will be remembered and React will call it after performing the DOM update. [Effects](https://reactjs.org/docs/hooks-effect.html) run in several parts of the react component lifecycle.
 
 The syntax is like this:
 
@@ -87,7 +95,7 @@ The syntax is like this:
 `}
 />
 
-By dependencies I mean what values need to change in order for this effect to run again. In our case we want to this effect to run when the page loads so we can set it as an empty array:
+Dependencies mean values that need to change in order for the effect to run again. In our case, we want the effect to run when the page loads and set an empty array:
 
 <Code
   code={`
@@ -116,7 +124,7 @@ Right now we have this:
   `}
 />
 
-But we want to substitute the src with a variable from the state so we need to interpolate and in React we do that by wrapping the property value in `{}`.
+But we want to substitute the src with a variable from the state so we need to interpolate it. In React we do this by wrapping the property value in `{}`.
 
 <Code
   language="markup"

@@ -10,9 +10,9 @@ import Code from '../components/code'
 
 ## Install `react-icons`
 
-First thing we will need to do is install [`react-icons`](https://www.npmjs.com/package/react-icons) and on CodeSandbox you do that by clicking on `Add Dependency`, look for `react-icons`, click on it and CodeSandbox will automatically install it in your project.
+First thing we will need to do is install [`react-icons`](https://www.npmjs.com/package/react-icons). On CodeSandbox you do this by clicking `Add Dependency`, and searching for and clicking `react-icons`. Now CodeSandbox will automatically install it in your project.
 
-After that we want for now two icons: `GoHeart` and `GoArrowRight` and we want to import it from `/go` for the github icons so we write:
+After this we want to indicate which icons we want to use: `GoHeart` and `GoArrowRight`. We have to import them from `/go`, so we write:
 
 <Code
   code={`
@@ -22,7 +22,7 @@ import { GoHeart, GoArrowRight } from "react-icons/go";
 
 ## Add the boilerplate JSX
 
-After these has been added we can now add our JSX to show our buttons even if they don't do anything so after the `<figure>` paste this JSX:
+Now it's time to add our JSX so that we can show our buttons, but they won't actually do anything yet. After the `<figure>` tag paste this JSX:
 
 <Code
   code={`
@@ -43,11 +43,11 @@ After these has been added we can now add our JSX to show our buttons even if th
 
 ## Add next cat functionality
 
-After we have this JSX we want to be able to get a new cat when we click next. To do this we have a event handler called `onClick` that we can attach to the button and inside of it call a function.
+Now that we have added the JSX above, we want add the functionality to get a new cat when we click the next button. To do this we use the event handler called `onClick`, and attach it to the button and call a function inside of it.
 
-> We are attaching it to the button and not the actual icon because of accessability concerns. If someone with an assisting technology device tries to access our website and the onClick is on the icon it will not be announced as a button.
+> We are attaching it to the button and not the actual icon because of accessability concerns. If someone with an assisting technology device tries to access our website and the onClick is on the icon, it will not be announced as a button.
 
-We already have the `getCat` function that we can call to get a new cat so we need to attach it to the button and we ready to go:
+We already have the `getCat` function that we can use to get a new cat, so we need to attach it on the button:
 
 <Code
   code={`
@@ -66,4 +66,4 @@ We already have the `getCat` function that we can call to get a new cat so we ne
 `}
 />
 
-When you now click on the next button you will get a new cat 🎉
+When you now click on the next button, you will get a new cat! 🎉

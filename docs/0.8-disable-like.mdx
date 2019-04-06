@@ -8,9 +8,9 @@ import Code from '../components/code'
 
 # Disable Like
 
-A small bug we have with our application right now is that we can like the same cat twice and that shouldn't be allowed. We can fix this by adding a disabled attribute to the button and attach it to a function that will run every time our render function runs.
+We currently have a bug in our app. We can now like the same cat twice, and that shouldn't be allowed. We can fix this by adding a disabled attribute to the button when the cat is already in our favories and attach it to a function that will run every time our render function runs.
 
-To do this let's attach the function and then create it:
+To do this with a function like so:
 
 <Code
   code={`
@@ -24,11 +24,11 @@ To do this let's attach the function and then create it:
 `}
 />
 
-As you can see we are not calling the function as a inside an arrow function here and that is because in this case we do want it to run on page render and also on every update to make sure that we are disabling the button correctly.
+We previously explained why we used an arrow function to call our `favoriteCat` function in a `onClick` event in [Part 6 - Add Cats to Favorites](0.6-add-favorites.mdx#call-the-function), but as you may have noticed, we are not using it for our `catInFavorites` function to disable our button. This is because we want to call this function on page render and every update to make sure that we are disabling the button correctly.
 
-## Write the function
+## Writing the function
 
-What we want to do is check if the current cat being shown in the big image is already in the array of `favoriteCats`. If we think about it we want to disable the button when the array already contains that cat and leave it enabled when that is not happening. In ES6 we got a new function in the array method called exactly that:
+Now we want to write the logic for disabling the like button for cats that are already in the favorite list. To do this, we have to check if a cat exists in the `favoriteCats` array, and if it does, disable the button. In ES6 we have a new array method to help us do exactly this called [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). We use it like this:
 
 <Code
   code={`
@@ -36,4 +36,4 @@ What we want to do is check if the current cat being shown in the big image is a
 `}
 />
 
-This function will return false when the cat as yet not been added and true when it has and that will make our button disabled 🎉
+This function will return false when a cat in our array is not included in our favorites yet and true if it is! This way, our button will be disabled or enabled accordingly! 🎉
