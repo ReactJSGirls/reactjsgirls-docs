@@ -8,35 +8,32 @@ import Code from '../components/code'
 
 # Remove Cats from favorites
 
-Right now we can add cats to our favorites but when clicking on removing a cat nothing happens so in this part we are going to create a function for that.
+We can now add favorite cats in our app, but when want to delete a cat from favorites, nothing happens. In this section we will create a function to do this.
 
 First step is to think about how we want to do this:
 
-We have the all the URL's of the cats in the array and we know that we want to remove the one that is attached to the that `li` so what we want to do is leave all the cats in the array expect the one where the url matches the one of the cat we clicked.
+We currently have all of our cat image URLs in an array, and we want to remove the one that belongs to the `li` that is being clicked. Which means, all cats should stay in our array unless the URL from the click matches a cat in the array.
 
-We can do this with a filter function where we get all the cats in the favorites and only returns the one where the URL is different then the URL of the cat we wanted to delete, like so:
+To implement this functionality, we create a filter function where we take all the cats in the `favoriteCats` array and only return the cats with a URL that is different from the URL of the cat we want to delete, like so:
 
 <Code
   code={`
-  const removeFavorite = currentCatIndex => {
-    setFavoriteCats(favoriteCats.filter((cat, index) => {
-        if (index !== catToRemoveIndex) return true;
-        return false;
-      })
+  const removeFavorite = currentCat => {
+    setFavoriteCats(favoriteCats.filter(cat => cat !== currentCat))
   }
 `}
 />
 
-That's exactly what we do here, the filter functions returns a new array with all the elements that pass the test implemented in the function. In this case all the cats will pass except the one we clicked on.
+This filter function returns a new array with all the elements that pass our test: if `cat` don't match our `currentCat` URL, return `cat`. In our case, this will be all the cats except for the one we clicked on to delete.
 
-Let's now call this function and pass it the current cat when we click the the trash icon in a favorite cat:
+To make this work in our app, we have to pass the URL of the cat we are clicking on as a parameter to our function, which in this case is `cat`.
 
 <Code
   code={`
-  <button onClick={() => removeFavorite(index)}>
+  <button onClick={() => removeFavorite(cat)}>
     <GoTrashcan size="20" />
   </button>
 `}
 />
 
-If you now click on the trash can in a cat that is already in favorites you can see that is removed 🎉
+If you now click on the trash can icon to delete a cat from the favorites list, you can see that it gets deleted! 🎉
