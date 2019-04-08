@@ -12,17 +12,14 @@ Right now we can add cats to our favorites but when clicking on removing a cat n
 
 First step is to think about how we want to do this:
 
-We have the all the URL's of the cats in the array and we know that we want to remove the one that is attached to the that `li` so what we want to do is leave all the cats in the array expect the one where the url matches the one of the cat we clicked.
+We have the all the URL's of the cats in the array and we know that we want to remove the one that is attached to the that `li` so what we want to do is leave all the cats in the array except the one where the url matches the one of the cat we clicked.
 
 We can do this with a filter function where we get all the cats in the favorites and only returns the one where the URL is different then the URL of the cat we wanted to delete, like so:
 
 <Code
   code={`
-  const removeFavorite = currentCatIndex => {
-    setFavoriteCats(favoriteCats.filter((cat, index) => {
-        if (index !== catToRemoveIndex) return true;
-        return false;
-      })
+  const removeFavorite = catToRemove => {
+    setFavoriteCats(favoriteCats.filter(cat => cat !== catToRemove));
   }
 `}
 />
@@ -33,7 +30,7 @@ Let's now call this function and pass it the current cat when we click the the t
 
 <Code
   code={`
-  <button onClick={() => removeFavorite(index)}>
+  <button onClick={() => removeFavorite(cat)}>
     <GoTrashcan size="20" />
   </button>
 `}
